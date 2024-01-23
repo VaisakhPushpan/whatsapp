@@ -1,0 +1,9 @@
+.messages{
+    background-color: rgb(113, 153, 227);
+    padding: 10px;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+    // &::-webkit-scrollbar{
+    //     border-radius: 5px;
+    // }
+}

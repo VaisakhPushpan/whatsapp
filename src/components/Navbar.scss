@@ -1,0 +1,15 @@
+.navbar{
+    background-color: rgb(10, 10, 57);
+    height: 50px;
+    img{
+        width: 24px;
+        height: 24px;
+        background-color: #fff;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    button{
+        font-weight: 2;
+        padding: 1px;
+    }
+}

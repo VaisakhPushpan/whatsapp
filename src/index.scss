@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+}
+.loaders{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(6, 8, 27);
+    color: white;
+}
+
+@media(max-width : 1368px ){
+    .navbar{
+        .logo{
+            display: none;
+        }
+        .user{
+            button{
+                display: none;
+            }
+        }
+    }
+}
+
+@media(max-width : 768px ){
+    .navbar{
+        .user{
+            img{
+                display: none;
+            }
+        }
+    }
+}
+
+@media(max-width : 500px){
+    .container{
+        width: 100% !important;
+    }
+}
