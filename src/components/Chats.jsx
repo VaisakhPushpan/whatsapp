@@ -8,7 +8,7 @@ const Chats = () => {
   const [chats, setChats] = useState([]);
   const { currentUser } = useContext(AuthContext);
  const {dispatch} = useContext(ChatContext)
-  useEffect(() => {
+   useEffect(() => {
     const getChats = () => {
       const unSub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         setChats(doc.data());
@@ -23,7 +23,6 @@ const Chats = () => {
   const handleSubmit = (user) =>{
     dispatch({type : "CHANGE_USER" , payload : user})
   }
-  console.log(Object.entries(chats));
 
   return (
     <div className="chats">

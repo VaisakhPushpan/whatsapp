@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthConetxt';
 const Navbar = () => {
 const {currentUser} = useContext(AuthContext)
+
   return (
     <div className="navbar p-3">
       <span className="logo text-white">ChatApp</span>

@@ -8,28 +8,20 @@ import { AuthContext } from "../Context/AuthConetxt";
 const Routers = () => {
   const { currentUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    setUser(currentUser);
+    if(currentUser){
+      setUser(currentUser);
+    }
+    else{
+      setUser({})
+    }
     // Set loading to false once authentication state is determined
+    console.log(currentUser);
     setLoading(false);
   }, [currentUser]);
 
-  const ProtectedRouter = ({ children }) => {
-    // If still loading authentication state, show loading indicator
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-
-    // If currentUser is null, redirect to login page
-    if (!user) {
-      return <Navigate to="/login" />;
-    }
-
-    // Otherwise, render the protected content
-    return children;
-  };
 
 
 
@@ -37,13 +29,8 @@ const Routers = () => {
     <>
       <Routes>
         <Route
-          exact
           path="/"
-          element={
-            <ProtectedRouter>
-              <Home />
-            </ProtectedRouter>
-          }
+          element={currentUser?<Home/>:<Login/>}
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

@@ -7,19 +7,20 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
-  const [err,setErr] = useState(false)
-   const navigate = useNavigate();
+  const [err, setErr] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    setLoader(true)
+    setLoader(true);
     e.preventDefault();
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
-      setLoader(false)
+      setLoader(false);
     } catch (err) {
-      setErr(true)
-      setLoader(false)
+      setErr(true);
+      setLoader(false);
+      console.log(err);
     }
   };
 
@@ -28,7 +29,7 @@ const Login = () => {
       <div className="login-main">
         <h3 className="text-primary">Login</h3>
         <p>Login to Continue</p>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="d-flex flex-column">
             <label htmlFor="userEmail">Email</label>
             <input
@@ -36,6 +37,7 @@ const Login = () => {
               type="email"
               id="userEmail"
               placeholder="Enter Email"
+              value={email}
             />
           </div>
           <div className="d-flex flex-column">
@@ -43,8 +45,8 @@ const Login = () => {
             <input
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              id="userPass"
               placeholder="Password"
+              value={password}
             />
           </div>
           {loader ? (
@@ -52,13 +54,21 @@ const Login = () => {
               <span className="load"></span>
             </div>
           ) : (
-            <button className="btn btn-primary">Login</button>
+            <button onClick={handleSubmit} className="btn btn-primary">
+              Login
+            </button>
           )}
         </form>
         <p className="pt-5">
           Not Registered <Link to="/register">Register</Link>
         </p>
-        {err ?<span className="alert alert-danger">"Something is Wrong,Try again."</span> : ""}
+        {err ? (
+          <span className="alert alert-danger">
+            "Something is Wrong,Try again."
+          </span>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
