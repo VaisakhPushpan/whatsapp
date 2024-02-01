@@ -42,5 +42,15 @@ body{
 @media(max-width : 500px){
     .container{
         width: 100% !important;
+        height: 100vh !important;
     }
+    .send{
+        .imogi{
+            font-size : 20px !important;
+        }
+        button{
+            // width: 50px;
+        }
+    }
+    
 }
