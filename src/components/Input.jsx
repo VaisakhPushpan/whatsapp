@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './Input.scss'
-import {FaFileImage , FaPaperclip} from 'react-icons/fa'
+import {FaFileImage , FaPaperclip , FaPaperPlane} from 'react-icons/fa'
 import  {AuthContext} from '../Context/AuthConetxt'
 import {ChatContext} from '../Context/ChatContext'
 import { Timestamp, arrayUnion, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
@@ -103,12 +103,12 @@ const Input = () => {
     <div className='input'>
       <input onKeyUp={(e)=>{e.code == 'Enter' && handleSend()}} value={message} type="text" placeholder='Type Something.....' onChange={(e)=>setMessages(e.target.value)} />
       <div className="send">
-        <FaPaperclip />
+        {/* <FaPaperclip className='imogi'  /> */}
         <input className='d-none' type="file" id='file' onChange={(e)=> setImage(e.target.files[0])} />
         <label htmlFor="file">
-          <FaFileImage />
+          <FaFileImage className='imogi' />
         </label>
-        <button  onClick={handleSend}>Sent</button>
+        <FaPaperPlane  onClick={handleSend} />
       </div>
     </div>
   )
